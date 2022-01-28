@@ -1,6 +1,6 @@
 In recent years, computer vision has been a fast-growing field in which many innovative applications have been developing in various sectors like medical, autonomous vehicle, robotic, agriculture, sport, etc. One of the promising applications of computer vision technology is video surveillance.
 
-This 5-months research project in realized during my final year at the University of Technology of Ho Chi Minh City.
+This 5-months research project in realized during my final year at the University of Technology of Ho Chi Minh City. The primary objectives of the project and its principal tasks are intially stated in [this document](/Project-Objectives-and-Principal-Tasks.md).  
 
 
 ## Project name
