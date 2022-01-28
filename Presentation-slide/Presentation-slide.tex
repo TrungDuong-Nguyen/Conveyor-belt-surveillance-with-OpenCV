@@ -1,0 +1,692 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beamer Presentation
+% LaTeX Template
+% Version 1.0 (10/11/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+
+\documentclass{beamer}
+
+\usepackage[french]{babel}
+\uselanguage{French}
+\languagepath{French}
+
+% define new colors
+%\definecolor{LightBlue}{RGB}{140,186,252}
+\definecolor{BlueViolet}{RGB}{71,71,186}
+\definecolor{LightGray}{RGB}{240,240,240}
+\definecolor{ColdPurple}{RGB}{173,173,224}
+
+\mode<presentation> {
+
+% The Beamer class comes with a number of default slide themes
+% which change the colors and layouts of slides. Below this is a list
+% of all the themes, uncomment each in turn to see what they look like.
+
+%\usetheme{default}
+\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+%\usetheme{Berlin}
+%\usetheme{Boadilla}
+%\usetheme{CambridgeUS}
+%\usetheme{Copenhagen}
+%\usetheme{Darmstadt}
+%\usetheme{Dresden}
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+%\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+
+% As well as themes, the Beamer class has a number of color themes
+% for any slide theme. Uncomment each of these in turn to see how it
+% changes the colors of your current slide theme.
+
+%\usecolortheme{albatross}
+%\usecolortheme{beaver}
+%\usecolortheme{beetle}
+%\usecolortheme{crane}
+\usecolortheme{dolphin}
+%\usecolortheme{dove}
+%\usecolortheme{fly}
+%\usecolortheme{lily}
+%\usecolortheme{orchid}
+%\usecolortheme{rose}
+%\usecolortheme{seagull}
+%\usecolortheme{seahorse}
+%\usecolortheme{whale}
+%\usecolortheme{wolverine}
+
+%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
+%\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
+
+%\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+}
+
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+
+
+\usepackage{colortbl} % Allows to add colors to table	
+\usepackage{xcolor}   % Allows to change text color
+
+\definecolor{forestgreen}{RGB}{28,121,42}
+%\usepackage{psnfss}	% 
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title[Projet de fin d'étude]{Application de la vision par ordinateur dans la surveillance des produits sur le tapis roulant} % The short title appears at the bottom of every slide, the full title is only on the title page
+
+\author[Nguyen~Trung~Duong]{Étudiant: Nguyen~Trung~Duong \and \\
+Tuteur: Huynh~Van~Kiem} % Your name
+\institute[IPHCMV] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
+{Génie Électrique - Électronique \\
+Institut Poytechnique de Ho Chi Minh Ville \\ % Your institution for the title page
+%\medskip
+%\textit{john@smith.com} % Your email address
+}
+\date[January 2012]{January 2012} % Date, can be changed to a custom date
+
+\titlegraphic{
+	\centering
+%	\hspace{0.4cm}    
+    \includegraphics[width=2cm]{Logo-hcmut.png}
+    \hspace{1cm}    
+    \includegraphics[width=2cm]{Logo_AUF.png}
+}
+
+
+\begin{document}
+
+\begin{frame}
+\titlepage % Print the title page as the first slide
+\end{frame}
+
+\begin{frame}
+\frametitle{Plan de présentation} % Table of contents slide, comment this block out to remove it
+\tableofcontents % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+%	PRESENTATION SLIDES
+%----------------------------------------------------------------------------------------
+
+%------------------------------------------------
+\section{Introduction} % Sections can be created in order to organize your presentation into discrete blocks, all sections and subsections are automatically printed in the table of contents as an overview of the talk
+%------------------------------------------------
+
+%\subsection{Problem Statement} % A subsection can be created just before a set of slides with a common theme to further break down your presentation into chunks
+
+\begin{frame}
+\frametitle{Motivation \& Objectifs}
+\begin{exampleblock}{\Large{Motivations}}
+\begin{itemize}
+	\item L'importance de comptage automatique et vidéo-surveillance dans les processus industriels.
+	\item L'essor de la technologie de vision par ordinateur.
+\end{itemize}
+\end{exampleblock}
+
+\medskip
+\begin{exampleblock}{\Large{Objectifs}}
+\begin{itemize}
+\item Proposer des méthodes basant sur la vision par ordinateur pour compter et surveiller les produits sur un tapis roulant.  
+\item Construire un modèle qui remplit ces tâches en temps réel.
+\end{itemize}
+\end{exampleblock}
+\end{frame}
+
+
+%------------------------------------------------
+\section{Approche du problème}
+%------------------------------------------------
+
+\subsection{Mise en contexte} % A subsection can be created just before a set of slides with a common theme to further break down your presentation into chunks
+
+\begin{frame}
+\frametitle{Trois modes de fonctionnement du système}
+\begin{itemize}
+\item \textcolor{forestgreen}{\Large{1\textsuperscript{er} Mode:}}\\
+Les produits de même nature ou de type différents (en terme de taille, forme, couleur) situés individuellement ou par paires (Le cas d'un tapis roulant universel). 
+\bigskip
+\item \textcolor{forestgreen}{\Large{2\textsuperscript{è} Mode:}}\\
+Les produits de même type disposés en bloc de 3, 4 produits ou plus
+situés à proximité les uns des autres (Le cas d'un ligne de production en lots). 
+\bigskip
+\item \textcolor{forestgreen}{\Large{3\textsuperscript{è} Mode:}}\\
+Les produits qui se trouvent dans une ligne de production telle que la fabrication de bouteilles d'eau, boissons, etc.
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+\subsection{Solutions proposées} % A subsection can be created just before a set of slides with a common theme to further break down your presentation into chunks
+
+\begin{frame}
+\frametitle{Modèle du système pour les deux premiers modes}
+\centering
+    \includegraphics[height=7cm]{Modele_system_Mode1-2.png}
+\end{frame}
+
+\begin{frame}
+\frametitle{1\textsuperscript{er} mode: Principe de comptage}
+\centering
+    \includegraphics[width=11.5cm]{Mode1_Principe_Comptage.jpg}
+\end{frame}
+
+\begin{frame}
+\frametitle{1\textsuperscript{er} mode: Les étapes d'éxécution}
+\centering
+    \includegraphics[height=7cm]{Mode1_Etapes_Execution.jpg}
+\end{frame}
+
+\begin{frame}
+\frametitle{2\textsuperscript{è} mode: Principe de comptage}
+\centering
+    \includegraphics[width=11.5cm]{Mode2_Principe_Comptage.jpg}
+\end{frame}
+
+\begin{frame}
+\frametitle{2\textsuperscript{è} mode: Les étapes d'éxécution}
+\centering
+    \includegraphics[height=7cm]{Mode2_Etapes_Execution.jpg}
+\end{frame}
+
+\begin{frame}
+\frametitle{Modèle du système pour le 3\textsuperscript{è} mode}
+\centering
+    \includegraphics[height=6cm]{Modele_3e_Mode.jpg}
+\end{frame}
+
+\begin{frame}
+\frametitle{ 3\textsuperscript{è} mode: Principe de comptage}
+\centering
+    \includegraphics[width=11.5cm]{Mode3_Principe_Comptage.jpg}
+\end{frame}
+
+\begin{frame}
+\frametitle{ 3\textsuperscript{è} mode: Les étapes d'éxécution}
+\centering
+    \includegraphics[height=7cm]{Mode3_Etapes_Execution.jpg}
+\end{frame}
+
+%------------------------------------------------
+
+\subsection{Remarques} % A subsection can be created just before a set of slides with a common theme to further break down your presentation into chunks
+
+\begin{frame}
+\frametitle{Remarques}
+
+%\begin{itemize}
+%\item L’identification de produits 
+%	\begin{itemize}
+%		\item Deux premiers modes: le constrate de la couleur par rapport à celle de la surface du tapis roulant (en noire) 
+%		\item Troisième mode: le mouvement du produit sur un fond stable
+%	\end{itemize}
+%\item La sensibilité à la perturbation lumineuse 
+%	\begin{itemize}
+%		\item Préparer consciencieusement le milieu de fonctionnement 
+%	\end{itemize}
+%\end{itemize}	
+
+\begin{exampleblock}{\Large{Principe d'identification de produits}}
+\begin{itemize}
+	\item Deux premiers modes: l'opposition de couleurs entre le produit et la surface du tapis roulant (en noire). 
+	\item Troisième mode: le mouvement du produit sur un fond stable.
+\end{itemize}
+\end{exampleblock}
+
+\medskip
+\begin{exampleblock}{\Large{Sensibilité à la perturbation lumineuse}}
+\begin{itemize}
+\item Nécessité de disposer méticuleusement l'éclairage sur le tapis roulant.
+\end{itemize}
+\end{exampleblock}
+
+\end{frame}
+
+%------------------------------------------------
+
+\subsection{Évaluations} % A subsection can be created just before a set of slides with a common theme to further break down your presentation into chunks
+
+\begin{frame}
+\frametitle{Les éléments importants à considérer}
+\centering
+    \includegraphics[width=10.5cm]{Evaluation.png}
+
+\bigskip
+Ces quatres facteurs doivent être pris en compte lors de l'expérimentation et de l'étalonnage du système, en raison de leur impacts significatifs sur la stabilité et la précision du processus de comptage.
+\end{frame}
+
+%------------------------------------------------
+\section{Modèle du tapis roulant}
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Tapis roulant commandé par onduleur}
+\centering
+    \includegraphics[height=6cm]{Tapis_roulant.png}
+\end{frame}
+
+%------------------------------------------------
+\section{Outils de programmation}
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Logiciel et bibliothèques utilisés}
+\centering
+    \includegraphics[width=11.5cm]{Outils de programme.drawio.png}  
+\bigskip
+\begin{itemize}
+\item Visual Studio 2010: Logiciel de dévelopment en C/C++.   
+\end{itemize} 
+\end{frame}
+
+%------------------------------------------------
+\section{Fonctionnement du système}
+%------------------------------------------------
+
+%------------------------------------------------
+%\subsection{Fonctionnement du système} % A subsection can be created just before a set of slides with a common theme to further break down your presentation into chunks
+
+\begin{frame}
+\frametitle{Les étapes de fonctionnement}
+\begin{enumerate}
+\item \textcolor{forestgreen}{\Large{Capturer l'image du flux vidéo}}
+\bigskip
+\item \textcolor{forestgreen}{\Large{Pré-traiter les images}}
+\bigskip
+\item \textcolor{forestgreen}{\Large{Analyser et compter les blobs}}
+\bigskip
+\item \textcolor{forestgreen}{\Large{Sauvegarder les données}}
+\end{enumerate}
+\end{frame}
+
+%------------------------------------------------
+\subsection{Capturer l'image du flux vidéo} % A subsection can be created just before a set of slides with a common theme to further break down your presentation into chunks
+
+\begin{frame}
+\frametitle{Principe de capture de l'image du flux vidéo}
+\centering
+    \includegraphics[height=7cm]{Capture_image.jpg}
+\end{frame}
+
+%------------------------------------------------
+\subsection{Pré-traiter les images} % A subsection can be created just before a set of slides with a common theme to further break down your presentation into chunks
+
+\begin{frame}
+\frametitle{Les étapes de pré-traitement des images (1\textsuperscript{er} \& 2\textsuperscript{è} Mode)}
+\centering
+    \includegraphics[height=7cm]{Pretraiter_image_M12.jpg}
+\end{frame}
+
+\begin{frame}
+\frametitle{Résultats du pré-traitement des images (1\textsuperscript{er} \& 2\textsuperscript{è} Mode)}
+\begin{columns}
+% Column 1
+\begin{column}{0.33\textwidth}
+\begin{figure}
+\begin{center}
+    \includegraphics[width=3cm]{image18.jpeg}
+
+    \vspace{0.5cm}
+
+    \includegraphics[width=3cm]{image21.jpeg}
+\end{center}
+\end{figure}
+\end{column}
+
+% Column 2
+\begin{column}{0.33\textwidth}
+\begin{center}
+    \includegraphics[width=3cm]{image20.jpeg}
+
+    \vspace{0.5cm}
+
+    \includegraphics[width=3cm]{image22.jpeg}
+\end{center}
+\end{column}
+
+% Column 3
+\begin{column}{0.33\textwidth}
+\begin{center}
+    \includegraphics[width=3cm]{image19.jpeg}
+
+    \vspace{0.5cm}
+
+    \includegraphics[width=3cm]{image23.jpeg}
+\end{center}
+\end{column}
+\end{columns}
+\medskip
+Images d'entrées (1\textsuperscript{er} ligne) et Images à la sortie (2\textsuperscript{è} ligne) du processus de pré-traitement.
+\end{frame}
+
+\begin{frame}
+\frametitle{Les étapes de pré-traitement des images (3\textsuperscript{è} Mode)}
+\centering
+    \includegraphics[height=7cm]{Pretraiter_image_M3.jpg}
+\end{frame}
+
+\begin{frame}
+\frametitle{Résultat de la modélisation de l'image de fond (3\textsuperscript{è} Mode)}
+
+\begin{columns}
+% Column 1
+\begin{column}{0.33\textwidth}
+\begin{figure}
+\begin{center}
+    \includegraphics[width=3cm]{BG0.jpg}
+
+    \vspace{0.4cm}
+
+    \includegraphics[width=3cm]{BG3.jpg}
+\end{center}
+\end{figure}
+\end{column}
+
+% Column 2
+\begin{column}{0.33\textwidth}
+\begin{figure}
+\begin{center}
+    \includegraphics[width=3cm]{BG1.jpg}
+
+    \vspace{0.4cm}
+
+    \includegraphics[width=3cm]{BG4.jpg}
+\end{center}
+\end{figure}
+\end{column}
+
+% Column 3
+\begin{column}{0.33\textwidth}
+%\centering
+%    \includegraphics[width=3cm]{BG2.jpg}
+%    \includegraphics[width=3cm]{BG5.jpg}
+\begin{figure}
+\begin{center}
+    \includegraphics[width=3cm]{BG2.jpg}
+    
+    \vspace{0.4cm}
+
+    \includegraphics[width=3cm]{BG5.jpg}
+%   \vspace{0.1cm}
+%    \caption{ActionButton}
+%    \label{ActionButton}
+\end{center}
+\end{figure}
+\end{column}
+\end{columns}
+\medskip
+De gauche à droite, de haut en bas: le déroulement de la modélisation  de l'image de fond (ou, l'image en arrière plan - en haut, à gauche) avec l'algorithm "Mixture of Gaussian" (MOG).
+En bas, à droite: Lorsque la modélisation est accomplie, le système est prêt à fonctionner.
+\end{frame}
+
+%------------------------------------------------
+\subsection{Analyser et compter les blobs} % A subsection can be created just before a set of slides with a common theme to further break down your presentation into chunks
+
+\begin{frame}
+\frametitle{Analyser les blobs à l'aide de la bibliothèque cvBlobsLib}
+\begin{columns}
+% Column 1
+\begin{column}{0.33\textwidth}
+\begin{center}
+    \includegraphics[width=3cm]{image31.jpeg}
+
+    \vspace{0.2cm}
+
+    \includegraphics[width=3cm]{image33.jpeg}
+
+    \vspace{0.2cm}
+
+    \includegraphics[width=3cm]{image35.jpeg}
+\end{center}
+\end{column}
+
+% Column 2
+\begin{column}{0.33\textwidth}
+\begin{center}
+    \includegraphics[width=3cm]{image32.jpeg}
+
+    \vspace{0.2cm}
+
+    \includegraphics[width=3cm]{image34.jpeg}
+
+    \vspace{0.2cm}
+
+    \includegraphics[width=3cm]{image36.jpeg}
+\end{center}
+\end{column}
+
+% Column 3
+\begin{column}{0.33\textwidth}
+\centering
+    \includegraphics[height=7cm]{Analyser_Compter_blobs.jpg}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Compter les blobs (1\textsuperscript{er} Mode \& 3\textsuperscript{è} Mode)}
+\begin{columns}
+% Column 1
+\begin{column}{0.5\textwidth}
+	\begin{itemize}
+		\item \textcolor{forestgreen}{\Large{1\textsuperscript{er} Mode}}
+	\end{itemize}
+	\begin{figure}
+	\begin{center}
+	    \includegraphics[width=3.8cm]{Analyser_Compter_blobs_Mode1_1.jpg}
+	
+	    \vspace{0.4cm}
+	
+	    \includegraphics[width=3.8cm]{Analyser_Compter_blobs_Mode1_2.jpg}
+	\end{center}
+	\end{figure}
+
+\end{column}
+
+% Column 2
+\begin{column}{0.5\textwidth}
+	\begin{itemize}
+		\item \textcolor{forestgreen}{\Large{3\textsuperscript{è} Mode}}
+	\end{itemize}
+	\begin{figure}
+	\begin{center}
+	    \includegraphics[width=3.8cm]{Analyser_Compter_blobs_Mode3_1.jpg}
+	
+	    \vspace{0.4cm}
+	
+	    \includegraphics[width=3.8cm]{Analyser_Compter_blobs_Mode3_2.jpg}
+	\end{center}
+	\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Compter les blobs (2\textsuperscript{è} Mode)}
+%\begin{itemize}
+%\item 
+%\end{itemize}
+
+\begin{table}
+\begin{center}
+\resizebox{11cm}{!}
+{
+\begin{tabular}{|c||c||c|}
+\hline
+\rowcolor{BlueViolet}
+    \textcolor{white}{Quantité du produit} & \textcolor{white}{Superficie du bloc (en pixels)} & \textcolor{white}{Tolérance (en pixels)}\\
+\hline
+\rowcolor{ColdPurple}
+    1 & 14500 \textdiv 18000 & 3500\\ 
+\hline
+\rowcolor{LightGray}
+    2 & 29000 \textdiv 36000 & 7000\\ 
+\hline
+\rowcolor{ColdPurple}
+    3 & 42000 \textdiv 50000 & 7000\\     
+\hline
+\end{tabular}
+}
+\end{center}
+\caption{Tableau de superficies de référence pour blocs contenant 1, 2, 3 produits.}
+\end{table}
+
+\begin{columns}
+% Column 1
+\begin{column}{0.5\textwidth}
+\centering
+    \includegraphics[width=4.5cm]{Analyser_Compter_blobs_Mode2_1.jpg}
+\end{column}
+
+% Column 2
+\begin{column}{0.5\textwidth}
+\centering
+    \includegraphics[width=4.5cm]{Analyser_Compter_blobs_Mode2_2.jpg}
+\end{column}
+\end{columns}
+\smallskip
+À gauche: Image du bloc de produit, avec boîte de contour (en verte) et le point central (en rouge). À droite: Bloc coloré.
+\end{frame}
+
+%------------------------------------------------
+\subsection{Sauvegarder les données} % A subsection can be created just before a set of slides with a common theme to further break down your presentation into chunks
+
+\begin{frame}
+\frametitle{Le flux vidéo}
+\begin{columns}
+
+% column 1
+\begin{column}{0.70\textwidth}
+\begin{exampleblock}{Le flux vidéo du processus de comptage automatique}
+	Exemple: \colorbox{green}{25\textendash 12\textendash 2011\_21h\textendash 17m.avi} 
+\end{exampleblock}
+\smallskip
+
+\begin{itemize}
+\item Le module HighGUI de la bibliothèque OpenCV support l'initialisation et l'enreistrement du flux vidéo.\\
+
+\smallskip
+\item Dans la vidéo, la quantité de produits comptés pendant le temps d'enregistrement est affichée en temps réel. 
+\end{itemize}
+\end{column}
+
+% column 2
+\begin{column}{0.30\textwidth}
+\centering
+    \includegraphics[height=7cm]{Sauvegarde_Video.jpg}
+\end{column}
+
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{L'image du produit \& Les informations sur le comptage}
+
+\begin{columns}
+% column 1
+\begin{column}{0.70\textwidth}
+
+\begin{exampleblock}{L'image des produits comptés}
+	Exemple: \colorbox{green}{25\textendash 12\textendash 2011\_21h\textendash 17m Product1.jpg} 
+\end{exampleblock}
+%\smallskip
+
+\begin{itemize}
+\item "21h\textendash 17m" $\longrightarrow$ le temps où ce produit (ou bloc de produit, pour le 2\textsuperscript{è} Mode) est compté.
+%\smallskip 
+\item "Product1" $\longrightarrow$ c'était le premier produit/ bloc de produit compté dans ce poste de travail.
+\end{itemize}
+
+\begin{exampleblock}{Les informations concernant le poste de travail}
+	Exemple: \colorbox{green}{25\textendash 12\textendash 2011\_15h\textendash 15m.xml}
+\end{exampleblock}
+%\smallskip
+
+\begin{itemize}
+\item Chaque fichier .xml contient l'heure de début, l'heure de fin, le nombre total de produits comptés.
+\end{itemize}
+
+\end{column}
+
+% column 2
+\begin{column}{0.3\textwidth}
+\centering
+    \includegraphics[height=7cm]{Sauvegarde_Image_Infos.jpg}
+\end{column}
+
+\end{columns}
+
+\end{frame}
+
+%------------------------------------------------
+\section{Interface d'utilisateur du système}
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Interface construite à l'aide de la bibliothèque MFC}
+\centering
+    \includegraphics[height=6cm]{Interface du systeme.jpg}
+
+Permet à l'opérateur d'examiner l'état pré-travail du système, choisir son mode de fonctionnement, consulter les données sauvegardées.
+\end{frame}
+
+%------------------------------------------------
+\section{Conclusions et perspectives}
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Conclusions et perspectives}
+
+\begin{exampleblock}{\Large{Conclusions}}
+	\begin{itemize}
+		\item Avantages: simple, flexible, économique. 
+		\item Inconvénients: non parfait ($\sim$ 90\%), sensible à la  perturbation de l'éclairage au milieu de fonctionnement . 
+	\end{itemize}
+\end{exampleblock}
+\
+\begin{exampleblock}{\Large{Perspectives}}
+	\begin{itemize}
+		\item Augmenter la précision de comptage. 
+		\item Connecter sur Internet $\longrightarrow$ surveillance en ligne.
+ 	    \item Étendre l’envergure du système $\longrightarrow$ multi-processes. 
+	\end{itemize}
+\end{exampleblock}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{}
+\Huge{\centerline{Merci pour votre attention}}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+
+\end{document} 
