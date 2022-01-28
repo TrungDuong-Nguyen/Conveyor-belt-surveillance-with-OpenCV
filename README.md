@@ -1,8 +1,5 @@
-<img align="right" width=250 height=150 src="https://github.com/TrungDuong-Nguyen/Conveyor-belt-surveillance-with-OpenCV/blob/main/Images/AUF-Logo.png"> <img align="right" width=150 height=150 src="https://github.com/TrungDuong-Nguyen/Conveyor-belt-surveillance-with-OpenCV/blob/main/Images/UTHCM-Logo.png"> 
+<img align="right" width=150 height=100 src="https://github.com/TrungDuong-Nguyen/Conveyor-belt-surveillance-with-OpenCV/blob/main/Images/AUF-Logo.png"> <img align="right" width=100 height=100 src="https://github.com/TrungDuong-Nguyen/Conveyor-belt-surveillance-with-OpenCV/blob/main/Images/UTHCM-Logo.png"> 
 
-<br>
-<br>
-<br>
 <br>
 <br>
 <br>
